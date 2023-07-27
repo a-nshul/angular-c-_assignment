@@ -1,0 +1,32 @@
+@model NewsletterSignUp
+
+<h2>Sign Up for Our Newsletter</h2>
+
+@using (Html.BeginForm("SignUp", "Newsletter"))
+{
+    <div>
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email)
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.HowHeardAboutUs)
+        @Html.DropDownListFor(m => m.HowHeardAboutUs, new SelectList(new[] { "Advert", "Word of Mouth", "Other" }))
+        @Html.ValidationMessageFor(m => m.HowHeardAboutUs)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.ReasonForSigningUp)
+        @Html.TextAreaFor(m => m.ReasonForSigningUp)
+    </div>
+    <button type="submit">Sign Up</button>
+}
+
+@if (ViewData["Message"] != null)
+{
+    <div>@ViewData["Message"]</div>
+}
+
+@if (ViewData["ErrorMessage"] != null)
+{
+    <div>@ViewData["ErrorMessage"]</div>
+}
